@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+# SequenceAlignment
+
+SequenceAlignment is an R package designed for performing DNA sequence alignment, analyzing results, and creating visualizations like heatmaps and bar plots. It is especially useful for bioinformatics workflows that involve comparing DNA sequences to reference datasets.
+
+---
+
+## Installation
+
+To install the package from a local `.tar.gz` file:
+```r
+install.packages("SequenceAlignment_0.1.0.tar.gz", repos = NULL, type = "source")
+
+library(SequenceAlignment)
+
+input_seq <- "ATCGGGAA"
+ref_seq <- "path to the FASTA file/s "
+result <- perform_alignment(input_seq, ref_seq)
+
+# View the alignment score
+print(result$score)
+
+
+file_paths <- c("file1.fasta", "file2.fasta")
+ref_sequences <- load_reference_sequences(file_paths)
+
+# View the loaded sequences
+print(ref_sequences)
+
+
+input_seq <- "ATCGTACG"
+ref_files <- c("file1.fasta", "file2.fasta")
+results <- analyze_input_sequence(input_seq, ref_files)
+
+# View the results
+print(results)
+
+library(ggplot2)
+
+# Simulated results for demonstration
+results <- data.frame(
+  Reference_Name = c("Ref1", "Ref2", "Ref3"),
+  Alignment_Score = c(85, 92, 78)
+)
+
+# Generate the heatmap
+heatmap_plot <- create_heatmap(results)
+print(heatmap_plot)
+
+output_file <- "alignment_results.csv"
+save_results_to_csv(results, output_file)
+
+# Verify the file was created
+file.exists(output_file)
+
+
